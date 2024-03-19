@@ -20,7 +20,7 @@ AccelStepper stepper3(1, threeStep, threeDir);
 MultiStepper steppers;
 
 double angToStep = 0.556;
-long tarAngle[3]={ 45, 45, 45 };
+long tarAngle[3]={ 45, -45, 45 };
 long posTar[3]={ 0, 0, 0};
 double speed[3] = { 0, 0, 0 }, speedPrev[3], ks = 1; 
 long posCur[3]={ 0,0,0 };
