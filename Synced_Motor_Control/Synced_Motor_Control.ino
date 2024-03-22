@@ -19,12 +19,12 @@ AccelStepper stepper2(1, twoStep, twoDir);
 AccelStepper stepper3(1, threeStep, threeDir);
 MultiStepper steppers;
 
-double angToStep = 0.556;
-long tarAngle[3]={ 45, 45, 45 };
+double angToStep = 17.78;
+long tarAngle[3]={ 90, 90, 90 };
 long posTar[3]={ 0, 0, 0};
-double speed[3] = { 0, 0, 0 }, speedPrev[3], ks = 1; 
+double speed[3] = { 0, 0, 0 }, speedPrev[3], ks = 10; 
 long posCur[3]={ 0,0,0 };
-long posOrig[3]={-90, 180, 90};
+long posOrig[3]={0, 0, 0};
 
 void setup() {
   // Adding the steppers to the steppersControl instance for multi stepper control
@@ -49,7 +49,14 @@ void setup() {
   stepper1.setMaxSpeed(speed[0]);
   stepper2.setMaxSpeed(speed[1]);
   stepper3.setMaxSpeed(speed[2]);  
-  
+
+  for (int i = 0; i < 3; i++) {
+      speedPrev[i] = speed[i];    
+      posTar[i]  = tarAngle[i] * angToStep;                                                                                                  //sets previous speed
+      posCur[i] = (i == 0) * stepper1.currentPosition() + (i == 1) * stepper2.currentPosition() + (i == 2) * stepper3.currentPosition();     //sets current position
+      speed[i] = abs(posCur[i] - posTar[i]) * ks;                                                                                            //calculates the error in the current position and target position
+      //speed[i] = constrain(speed[i], 0, 1000); //constrains sped from 0 to 1000                                                                                   
+    }
 }
 
 void loop() {
@@ -59,27 +66,20 @@ void loop() {
 
 void moveTo(){
   
-  for (int i = 0; i < 3; i++) {
-      speedPrev[i] = speed[i];    
-      posTar[i]  = tarAngle[i] * angToStep;                                                                                        //sets previous speed
-      posCur[i] = (i == 0) * stepper1.currentPosition() + (i == 1) * stepper2.currentPosition() + (i == 2) * stepper3.currentPosition();  //sets current position
-      speed[i] = abs(posCur[i] - posTar[i]) * ks;                                                                                            //calculates the error in the current position and target position
-      speed[i] = constrain(speed[i], 0, 1000); //constrains sped from 0 to 1000                                                                                   
-    }
   stepper1.setMaxSpeed(speed[0]);
   stepper2.setMaxSpeed(speed[1]);
   stepper3.setMaxSpeed(speed[2]);
   //sets acceleration to be proportional to speed
-  stepper1.setAcceleration(speed[0]*1);
-  stepper2.setAcceleration(speed[0]*1);
-  stepper3.setAcceleration(speed[0]*1);
+  stepper1.setAcceleration(speed[0]*50);
+  stepper2.setAcceleration(speed[1]*50);
+  stepper3.setAcceleration(speed[2]*50);
   //sets target positions
   stepper1.moveTo(posTar[0]);
   stepper2.moveTo(posTar[1]);
   stepper3.moveTo(posTar[2]);
   //runs stepper to target position (increments at most 1 step per call)
+  Serial.println((String) "speed 1 "+ stepper1.speed());
   stepper1.run();
   stepper2.run();
   stepper3.run();
-  
 }
