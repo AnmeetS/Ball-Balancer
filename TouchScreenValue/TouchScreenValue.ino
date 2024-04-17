@@ -10,10 +10,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   PID(0, 0);  //(X setpoint, Y setpoint) -- must be looped
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }
 
 void PID(double xSetPoint, double ySetPoint){
