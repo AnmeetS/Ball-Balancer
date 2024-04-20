@@ -42,7 +42,7 @@ void setup() {
   stepper2.setCurrentPosition(posOrig[1]);
   stepper3.setCurrentPosition(posOrig[2]);
   
-  Serial.println((String) "pos 1 "+stepper1.currentPosition()+"pos2 "+stepper2.currentPosition() +"pos3 "+ stepper3.currentPosition());
+  Serial.println((String) "pos1 "+stepper1.currentPosition()+ " pos2 "+stepper2.currentPosition() + " pos3 "+ stepper3.currentPosition());
 
   delay(5000); 
 
