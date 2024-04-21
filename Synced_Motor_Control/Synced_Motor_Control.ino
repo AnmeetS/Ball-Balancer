@@ -44,19 +44,12 @@ void setup() {
   
   Serial.println((String) "pos1 "+stepper1.currentPosition()+ " pos2 "+stepper2.currentPosition() + " pos3 "+ stepper3.currentPosition());
 
-  delay(5000); 
+  delay(5000);
 
   stepper1.setMaxSpeed(speed[0]);
   stepper2.setMaxSpeed(speed[1]);
-  stepper3.setMaxSpeed(speed[2]);  
+  stepper3.setMaxSpeed(speed[2]);
 
-  for (int i = 0; i < 3; i++) {
-      speedPrev[i] = speed[i];    
-      posTar[i]  = tarAngle[i] * angToStep;                                                                                                  //sets previous speed
-      posCur[i] = (i == 0) * stepper1.currentPosition() + (i == 1) * stepper2.currentPosition() + (i == 2) * stepper3.currentPosition();     //sets current position
-      speed[i] = abs(posCur[i] - posTar[i]) * ks;                                                                                            //calculates the error in the current position and target position
-      //speed[i] = constrain(speed[i], 0, 1000); //constrains sped from 0 to 1000                                                                                   
-    }
 }
 
 void loop() {
@@ -65,7 +58,6 @@ void loop() {
 }
 
 void moveTo(){
-  
   stepper1.setMaxSpeed(speed[0]);
   stepper2.setMaxSpeed(speed[1]);
   stepper3.setMaxSpeed(speed[2]);
