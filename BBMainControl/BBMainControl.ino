@@ -25,7 +25,7 @@ MultiStepper steppers;
 TouchScreen ts = TouchScreen(A1, A0, A3, A2, 0 ); //touch screen pins (XGND, YGND, X5V, Y5V)
 
 // Robot IK class
-Robot robot(2.5, 4.5, 2, 3.75);
+Robot robot(2.5, 4, 2, 3.75);
 
 // Touch screen important variables
 double Xoffset = 500;         //X offset for the center position of the touchpad
@@ -33,7 +33,7 @@ double Yoffset = 500;         //Y offset for the center position of the touchpad
 
 //PID variables
 double xval,yval;
-double kp = 4E-4, ki = 2E-6, kd = 7E-3;                                                       //PID constants
+double kp = 3E-4, ki = 1E-6, kd = 8.5E-3;                                                       //PID constants
 double error[2] = { 0, 0 }, errorPrev[2], integr[2] = { 0, 0 }, deriv[2] = { 0, 0 }, out[2];  //PID terms for X and Y directions
 long timeI;                                                                           //variables to capture initial times
 
@@ -50,7 +50,7 @@ long tarPos[3] = { 0, 0, 0};
 double speed[3] = { 0, 0, 0}, speedPrev[3], ks = 50, ka = 100; 
 long curPos[3] = { 0, 0, 0};
 double origPos[3] = {0, 0, 0};
-double origAng = 90;
+double origAng = 205;
 
 void setup() {
   // put your setup code here, to run once:
@@ -64,7 +64,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  balance(4);
+  balance(4.25);
 }
 
 void motorSetup(){
@@ -107,7 +107,7 @@ void balance(double hz){
     PID(p.x, p.y, 0, 0);
     //converts px from a range of 0 to 1000 to a value from 0 to 180
     for (int i = 0; i < 3; i++){
-      tarAng[i]= robot.angle(i, hz, -out[0], -out[1]); // determines target angle
+      tarAng[i]= robot.angle(i, hz, out[0], out[1]); // determines target angle
       tarPos[i]  = tarAng[i] * angToStep; //sets the target position in a value that the stepper motor understands instead of angle
     }
     
@@ -124,7 +124,7 @@ void balance(double hz){
 
   timeI = millis();
   while (millis() - timeI < 20) {
-    moveTo(4, -out[0], -out[1]);  //moves the platfrom
+    moveTo(hz, out[0], out[1]);  //moves the platfrom
   }
 }
 
