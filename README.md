@@ -1,6 +1,6 @@
 <p align="center"><img src="https://socialify.git.ci/AnmeetS/Ball-Balancer/image?description=1&amp;font=Bitter&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Circuit%20Board&amp;theme=Dark" alt="project-image"></p>
 
-Hello and welcome to the GitHub repository of my Ball Balancing Robot! This project marks a significant milestone in my robotics software development journey, combining my passion for robotics with hands-on learning and innovation. Below, I delve into the inspiration, process, challenges, and future plans for this project.
+Hello and welcome to the GitHub repository of my Ball Balancing Robot! This project marks a significant milestone in my embdeded software engineering journey, combining my passion for robotics with hands-on learning and innovation. Below, I delve into the inspiration, process, challenges, and future plans for this project.
 
 ## Inspiration ✨
 
