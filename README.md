@@ -4,17 +4,17 @@ Hello and welcome to the GitHub repository of my Ball Balancing Robot! This proj
 
 ## Inspiration ✨
 
-One of my most driving aspirations is to create a robot that can help people in their daily lives. This realization led me to discover my passion for robotics software development. Given the niche nature of this field and the lack of specific courses in school, I took it upon myself to explore the basics of robotics coding concepts over the past two months. This exploration began with working on PID algorithms, and it inspired me to create a ball balancing machine. The idea was to develop a project that could practically apply these concepts while also challenging my understanding and skills.
+One of my most driving aspirations is to create a robot that can help people in their daily lives. This realization led me to discover my passion for robotics software development. Given the niche nature of this field and the lack of specific courses in school, I took it upon myself to explore the basics of robotics coding concepts over the past two months. This exploration began with working with PID algorithms, and it inspired me to create a ball balancing machine. The idea was to develop a project that could practically apply these concepts while also challenging my understanding and skills.
 
 ## The Process 🛠️
 
 The project began with extensive research. I invested in stepper motors due to their high accuracy and quiet operation. The design needed a platform with at least two degrees of freedom (pitch and yaw) to angle the platform in any direction. Initially, I considered using a gimbal, but I encountered clearance issues with the motors. This led me to explore other manipulator designs, eventually settling on a 3-RPS parallel manipulator. A 3-RPS manipulator was ideal because it provided the necessary degrees of freedom, but I ultimately chose a varation of this manipulator (A 3-RRS manipulator platform) due to the lack of access to prismatic actuation.
 
-Once the platform design was finalized, I began calculating the inverse kinematics necessary for coordinating platform tilt with stepper motor angles. This process involved advanced mathematical calculations, including solving complex equations related to the robot's geometry and movement. Each component—inverse kinematics values, resistive touchpad readings, motor control algorithms, and the PID control algorithm—was thoroughly tested. After a series of tests and refinements, I assembled and tuned the robot. The result is a finely tuned ball balancing machine, as demonstrated in the video below.
+Once the platform design was finalized, I attempted calculating the inverse kinematics necessary for coordinating platform tilt with stepper motor angles. This process involved advanced mathematical calculations, including solving complex equations related to the robot's geometry and movement using linear transformations. Each component—inverse kinematics values, resistive touchpad readings, motor control algorithms, and the PID control algorithm—was thoroughly tested. After a series of tests and refinements, I assembled and tuned the robot. The result is a finely tuned ball balancing machine, as demonstrated in the video below.
 
 ## Demo 🚀
 
-[Watch the demo](https://)
+[Watch the demo](https://www.anmeetsekhon.com/assets/videos/Ball%20Balancing%20Speed%20Up%20Video.mp4)
 
 ## Built with 💻
 
@@ -23,6 +23,7 @@ Technologies used in the project:
 - Arduino
 - C++
 - Stepper Motors
+- Solidworks
 
 ## Challenges I Ran Into 🚧
 
@@ -39,7 +40,7 @@ For those interested, a portion of the calculations performed for the inverse ki
 
 ## What's Next 🔮
 
-- **Patterns:** Implementing code to allow the platform to trace patterns on the touchpad using the ball.
+- **Documentation:** More documentation highlighting how exactly everything is done and what steps I took.
 - **Interactivity:** Developing a frontend interface to let users specify platform actions.
 
 ## Stay Connected 📢
@@ -49,3 +50,4 @@ Thank you for visiting my repository! Your feedback and contributions are always
 ---
 
 **Note:** This project is a continuous work in progress, and some features may be added soon. Stay tuned!
+**Inspiration:** This project was heavily inspired by existing ball balancing robots out there. While all the CAD and calculations I present are my own work, I drew significant inspiration from the two projects I have linked. All credits for this project go to [271828-](https://www.instructables.com/3DOF-Ball-on-Plate-Using-Closed-Loop-Stepper-Motor/) and [aaedmusa](https://www.instructables.com/Ball-Balancer/)
