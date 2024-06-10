@@ -27,9 +27,7 @@ long posCur[3]={ 0,0,0 };
 long posOrig[3]={0, 0, 0};
 
 void setup() {
-  // Adding the steppers to the steppersControl instance for multi stepper control
   Serial.begin(115200);
-  // Adding the steppers to the steppersControl instance for multi stepper control
   steppers.addStepper(stepper1);
   steppers.addStepper(stepper2);
   steppers.addStepper(stepper3);
@@ -53,7 +51,6 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   moveTo(); 
 }
 
@@ -61,15 +58,12 @@ void moveTo(){
   stepper1.setMaxSpeed(speed[0]);
   stepper2.setMaxSpeed(speed[1]);
   stepper3.setMaxSpeed(speed[2]);
-  //sets acceleration to be proportional to speed
   stepper1.setAcceleration(speed[0]*50);
   stepper2.setAcceleration(speed[1]*50);
   stepper3.setAcceleration(speed[2]*50);
-  //sets target positions
   stepper1.moveTo(posTar[0]);
   stepper2.moveTo(posTar[1]);
   stepper3.moveTo(posTar[2]);
-  //runs stepper to target position (increments at most 1 step per call)
   Serial.println((String) "speed 1 "+ stepper1.speed());
   stepper1.run();
   stepper2.run();
